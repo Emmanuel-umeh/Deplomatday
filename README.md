@@ -6,7 +6,7 @@ In the project directory, you can run:
 
 First
 
-### 'cd diplomacy'
+### `cd diplomacy`
 
 ### `yarn start`
 
