@@ -20,6 +20,7 @@ import verify from './views/Verify';
 //Utilities
 import PrivateRoute from './utils/PrivateRoute';
 import PublicRoute from './utils/PublicRoute';
+import Index from './dashboard';
 
 
 
@@ -55,7 +56,7 @@ const App = () => {
         <Switch>
           <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
           <PublicRoute path="/login" component={Login} />
-          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <PrivateRoute exact path="/dashboard" component={Index} />
           <PublicRoute exact path="/signup" component={Signup} />
           <AppRoute exact path="/verify" component={verify} />
         </Switch>

@@ -1,55 +1,107 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { setUserSession } from '../utils/Common';
-
-function Login(props) {
-  const [loading, setLoading] = useState(false);
-  const username = useFormInput('');
-  const password = useFormInput('');
-  const [error, setError] = useState(null);
-
-  // handle button click of login form
-  const handleLogin = () => {
-    setError(null);
-    setLoading(true);
-    axios.post('http://localhost:4000/users/signin', { username: username.value, password: password.value }).then(response => {
-      setLoading(false);
-      setUserSession(response.data.token, response.data.user);
-      props.history.push('/dashboard');
-    }).catch(error => {
-      setLoading(false);
-      if (error.response.status === 401) setError(error.response.data.message);
-      else setError("Something went wrong. Please try again later.");
-    });
+import React,{Component} from 'react'
+export default class Login extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      currentView: "signUp"
+    }
   }
 
-  return (
-    <div>
-      Login<br /><br />
-      <div>
-        Username<br />
-        <input type="text" {...username} autoComplete="new-password" />
-      </div>
-      <div style={{ marginTop: 10 }}>
-        Password<br />
-        <input type="password" {...password} autoComplete="new-password" />
-      </div>
-      {error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />
-      <input type="button" value={loading ? 'Loading...' : 'Login'} onClick={handleLogin} disabled={loading} /><br />
-    </div>
-  );
+  changeView = (view) => {
+    this.setState({
+      currentView: view
+    })
+  }
+
+  currentView = () => {
+    switch(this.state.currentView) {
+      case "signUp":
+        return (
+          <form style = {{width : "100%"}}>
+            <h2 style={{color:"black"}}>Sign Up!</h2>
+            <fieldset>
+              <legend style={{color:"black"}}>Create Account</legend>
+              <ul>
+                <li>
+                  <label style={{color:"black"}} for="username">Username:</label>
+                  <input type="text" id="username" required/>
+                </li>
+                <li>
+                  <label  style={{color:"black"}} for="email">Email:</label>
+                  <input type="email" id="email" required/>
+                </li>
+                
+                
+                <li>
+                  <label style={{color:"black"}} for="password">Password:</label>
+                  <input type="password" id="password" required/>
+                </li>
+              </ul>
+            </fieldset>
+            <button>Submit</button>
+            <button type="button" onClick={ () => this.changeView("logIn")}>Have an Account?</button>
+          </form>
+        )
+        break
+      case "logIn":
+        return (
+          <form>
+            <h2 style={{color:"black"}}>Welcome Back!</h2>
+            <fieldset>
+              <legend style={{color:"black"}}> Log In</legend>
+              <ul>
+                <li>
+                  <label for="username" style={{color:"black"}}>Username:</label>
+                  <input type="text" id="username" required/>
+                </li>
+                <li>
+                  <label for="password" style={{color:"black"}}>Password:</label>
+                  <input type="password" id="password" required/>
+                </li>
+                <li>
+                  <i/>
+                  <a onClick={ () => this.changeView("PWReset")} href="#">Forgot Password?</a>
+                </li>
+              </ul>
+            </fieldset>
+            <button>Login</button>
+            <button type="button" onClick={ () => this.changeView("signUp")}>Create an Account</button>
+          </form>
+        )
+        break
+      case "PWReset":
+        return (
+          <form>
+          <h2 style={{color:"black"}}>Reset Password</h2>
+          <fieldset>
+            <legend style={{color:"black"}}>Password Reset</legend>
+            <ul>
+              <li>
+                <em>A reset link will be sent to your inbox!</em>
+              </li>
+              <li>
+                <label style={{color:"black"}} for="email">Email:</label>
+                <input type="email" id="email" required/>
+              </li>
+            </ul>
+          </fieldset>
+          <button>Send Reset Link</button>
+          <button type="button" onClick={ () => this.changeView("logIn")}>Go Back</button>
+        </form>
+        )
+      default:
+        break
+    }
+  }
+
+
+  render() {
+    return (
+      <section id="entry-page">
+        {this.currentView()}
+      </section>
+    )
+  }
 }
 
-const useFormInput = initialValue => {
-  const [value, setValue] = useState(initialValue);
-
-  const handleChange = e => {
-    setValue(e.target.value);
-  }
-  return {
-    value,
-    onChange: handleChange
-  }
-}
-
-export default Login;
+ 
