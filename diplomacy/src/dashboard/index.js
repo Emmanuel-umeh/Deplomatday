@@ -20,7 +20,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import "./plugins/nucleo/css/nucleo.css";
-// import "@fortawesome/fontawesome-free/css/all.min.css";
+// import "/@fortawesome/fontawesome-free/css/all.min.css";
 import "./scss/argon-dashboard-react.scss";
 
 import AdminLayout from "./layouts/Admin.js";
@@ -36,11 +36,12 @@ class Index extends React.Component{
     return(
       <BrowserRouter>
       <Switch>
-        <Route path="/admin" render={props => <AdminLayout {...props} />} />
+        <Route path="/dashboard" render={props => <AdminLayout {...props} />} />
         <Route path="/auth" render={props => <AuthLayout {...props} />} />
-        <Redirect from="/" to="/admin/index" />
+        <Redirect from="/" to="/dashboard/index" />
       </Switch>
     </BrowserRouter>
+    
   //   document.getElementById("root")
   // );
   

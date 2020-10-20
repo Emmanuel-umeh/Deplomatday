@@ -20,7 +20,7 @@ import verify from './views/Verify';
 //Utilities
 import PrivateRoute from './utils/PrivateRoute';
 import PublicRoute from './utils/PublicRoute';
-import Index from './dashboard';
+import Index from './dashboard/index'
 
 
 

@@ -124,7 +124,7 @@ const Header = ({
                       navPosition && `header-nav-${navPosition}`
                     )}>
                     <li>
-                      <Link to="login" onClick={closeMenu}>Login</Link>
+                      <Link to="https://deplomat-profile.herokuapp.com/auth/login" onClick={closeMenu}>Login</Link>
                     </li>
                   </ul>
 
@@ -133,7 +133,7 @@ const Header = ({
                       className="list-reset header-nav-right"
                     >
                       <li>
-                        <Link to="/signup" className="button button-primary button-wide-mobile button-sm" onClick={closeMenu}>Sign up</Link>
+                        <Link to="https://deplomat-profile.herokuapp.com/auth/register" className="button button-primary button-wide-mobile button-sm" onClick={closeMenu}>Sign up</Link>
                       </li>
                     </ul>}
                 </div>
