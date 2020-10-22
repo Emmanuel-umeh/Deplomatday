@@ -61,19 +61,21 @@ const Hero = ({
         <div className={innerClasses}>
           <div className="hero-content">
             <h1 className="mt-0 mb-16 reveal-from-bottom" data-reveal-delay="200">
-              Landing template for <span className="text-color-primary">Diplomatday</span>
+              Welcome To<span className="text-color-primary">Diplomatday</span>
             </h1>
             <div className="container-xs">
               <p className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="400">
-               lorem ipsum  lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum</p>
+              The purpose of BAEVO, Black America’s Emergency Vote is to expedite the election of official leaders, who are authorized by the people, to sign international agreements on behalf of the African Diaspora in America. The app is built on the block chain to provide a secure and transparent election process which is essential for public confidence and legal credence. Our proprietary registration algorithm requires “Proof of Community” from all registering voters before voter accounts are approved for participation to minimize foreign interference. 
+      
+              </p>
               <div className="reveal-from-bottom" data-reveal-delay="600">
                 <ButtonGroup>
-                  <Button tag="a" color="primary" wideMobile href="#">
+                  <Button tag="a" color="primary" wideMobile href="https://deplomatdaydashboard.herokuapp.com/auth/login">
                     Get started
                     </Button>
-                  <Button tag="a" color="dark" wideMobile href="verify a user">
+                  {/* <Button tag="a" color="dark" wideMobile href="verify a user">
                     View on Github
-                    </Button>
+                    </Button> */}
                 </ButtonGroup>
               </div>
             </div>
@@ -99,6 +101,10 @@ const Hero = ({
             handleClose={closeModal}
             video="https://player.vimeo.com/video/174002812"
             videoTag="iframe" />
+
+            <p className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="400">
+Our unique terms of service agreement provides individuals with the convenience of electronic approval (ratification) of the “Declaration of the Global African Diaspora Summit”, as a lawful exercise of emergency powers to compensate for the lack of official Black American Representation. The mass-ratification of the declaration produces a unilateral treaty between the black american voters and thereby designates all eligible black voters as “competent authority” of the African Diaspora in America.
+        </p>
         </div>
       </div>
     </section>
